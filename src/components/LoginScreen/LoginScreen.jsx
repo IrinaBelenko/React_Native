@@ -4,11 +4,10 @@ import {
   Text,
   View,
   TouchableOpacity,
-  Image,
+  KeyboardAvoidingView,
+  Platform,
 } from "react-native";
 import { useFonts } from "expo-font";
-import LogoImage from "../../Screens/AddPhoto.png";
-import AddImage from "../../Screens/add.png";
 
 export default function LoginScreen() {
   const [fontsLoaded] = useFonts({
@@ -22,13 +21,17 @@ export default function LoginScreen() {
 
   return (
     <View style={styles.loginForm}>
-      <Text style={styles.text}>Увійти</Text>
+      <KeyboardAvoidingView
+        behavior={Platform.OS == "ios" ? "padding" : "height"}
+      >
+        <Text style={styles.text}>Увійти</Text>
+        <TextInput
+          style={styles.textInput}
+          placeholder="Адреса електронної пошти"
+        ></TextInput>
+        <TextInput style={styles.textInput} placeholder="Пароль"></TextInput>
+      </KeyboardAvoidingView>
 
-      <TextInput
-        style={styles.textInput}
-        placeholder="Адреса електронної пошти"
-      ></TextInput>
-      <TextInput style={styles.textInput} placeholder="Пароль"></TextInput>
       <TouchableOpacity style={styles.button}>
         <Text style={styles.textButton}>Увійти</Text>
       </TouchableOpacity>

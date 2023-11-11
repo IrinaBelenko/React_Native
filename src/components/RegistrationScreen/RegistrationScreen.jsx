@@ -5,6 +5,7 @@ import {
   View,
   TouchableOpacity,
   Image,
+  Button,
 } from "react-native";
 import { useFonts } from "expo-font";
 import LogoImage from "../../Screens/AddPhoto.png";
@@ -29,8 +30,13 @@ export default function RegistrationScreen() {
       <TextInput
         style={styles.textInput}
         placeholder="Адреса електронної пошти"
+        autoComplete="email"
       ></TextInput>
-      <TextInput style={styles.textInput} placeholder="Пароль"></TextInput>
+      <TextInput
+        style={styles.textInput}
+        placeholder="Пароль"
+        autoComplete="password"
+      ></TextInput>
       <TouchableOpacity style={styles.button}>
         <Text style={styles.textButton}>Зареєстуватися</Text>
       </TouchableOpacity>
@@ -73,7 +79,14 @@ const styles = StyleSheet.create({
     marginTop: 92,
     marginBottom: 33,
   },
-
+  textPassword: {
+    color: "#1B4371",
+    textAlign: "right",
+    fontFamily: "Roboto-Regular",
+    fontSize: 16,
+    fontStyle: "normal",
+    fontWeight: "400",
+  },
   textInput: {
     width: "100%",
     height: 50,
@@ -90,6 +103,7 @@ const styles = StyleSheet.create({
     height: 50,
     marginBottom: 16,
   },
+
   button: {
     backgroundColor: "#FF6C00",
     paddingVertical: 16,
