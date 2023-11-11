@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   TextInput,
   StyleSheet,
@@ -12,6 +13,8 @@ import {
 import { useFonts } from "expo-font";
 
 export default function LoginScreen() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [fontsLoaded] = useFonts({
     "Roboto-Medium": require("../../assets/fonts/Roboto-Medium.ttf"),
     "Roboto-Regular": require("../../assets/fonts/Roboto-Regular.ttf"),
@@ -21,6 +24,10 @@ export default function LoginScreen() {
     return null;
   }
 
+  const onLogin = () => {
+    console.debug(`${email} + ${password}`);
+  };
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.loginForm}>
@@ -29,13 +36,21 @@ export default function LoginScreen() {
         >
           <Text style={styles.text}>Увійти</Text>
           <TextInput
+            value={email}
+            onChangeText={setEmail}
             style={styles.textInput}
             placeholder="Адреса електронної пошти"
           ></TextInput>
-          <TextInput style={styles.textInput} placeholder="Пароль"></TextInput>
+          <TextInput
+            value={password}
+            onChangeText={setPassword}
+            style={styles.textInput}
+            secureTextEntry
+            placeholder="Пароль"
+          ></TextInput>
         </KeyboardAvoidingView>
 
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={onLogin}>
           <Text style={styles.textButton}>Увійти</Text>
         </TouchableOpacity>
         <Text style={styles.textSing}> Немає акаунту? Зареєструватися </Text>

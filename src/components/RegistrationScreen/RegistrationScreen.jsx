@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   TextInput,
   StyleSheet,
@@ -14,6 +15,9 @@ import LogoImage from "../../Screens/AddPhoto.png";
 import AddImage from "../../Screens/add.png";
 
 export default function RegistrationScreen() {
+  const [login, setLogin] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [fontsLoaded] = useFonts({
     "Roboto-Medium": require("../../assets/fonts/Roboto-Medium.ttf"),
     "Roboto-Regular": require("../../assets/fonts/Roboto-Regular.ttf"),
@@ -23,24 +27,37 @@ export default function RegistrationScreen() {
     return null;
   }
 
+  const onRegistration = () => {
+    console.debug(`${login} + ${email} + ${password}`);
+  };
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.registrationForm}>
         <Image style={styles.logoImage} source={LogoImage} />
         <Image style={styles.AddImage} source={AddImage} />
         <Text style={styles.text}>Реєстрація</Text>
-        <TextInput style={styles.textInput} placeholder="Логін"></TextInput>
         <TextInput
+          value={login}
+          onChangeText={setLogin}
+          style={styles.textInput}
+          placeholder="Логін"
+        ></TextInput>
+        <TextInput
+          value={email}
+          onChangeText={setEmail}
           style={styles.textInput}
           placeholder="Адреса електронної пошти"
           autoComplete="email"
         ></TextInput>
         <TextInput
+          value={password}
+          onChangeText={setPassword}
           style={styles.textInput}
+          secureTextEntry
           placeholder="Пароль"
-          autoComplete="password"
         ></TextInput>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={onRegistration}>
           <Text style={styles.textButton}>Зареєстуватися</Text>
         </TouchableOpacity>
         <Text style={styles.textSing}> Вже є акаунт? Увійти </Text>

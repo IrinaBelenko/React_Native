@@ -15,9 +15,9 @@ export default function App() {
     >
       <StatusBar style="auto" />
 
-      <LoginScreen />
-      {/* 
-      <RegistrationScreen /> */}
+      {/* <LoginScreen /> */}
+
+      <RegistrationScreen />
     </ImageBackground>
   );
 }
