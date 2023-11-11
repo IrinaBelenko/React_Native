@@ -6,6 +6,8 @@ import {
   TouchableOpacity,
   Image,
   Button,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from "react-native";
 import { useFonts } from "expo-font";
 import LogoImage from "../../Screens/AddPhoto.png";
@@ -22,26 +24,28 @@ export default function RegistrationScreen() {
   }
 
   return (
-    <View style={styles.registrationForm}>
-      <Image style={styles.logoImage} source={LogoImage} />
-      <Image style={styles.AddImage} source={AddImage} />
-      <Text style={styles.text}>Реєстрація</Text>
-      <TextInput style={styles.textInput} placeholder="Логін"></TextInput>
-      <TextInput
-        style={styles.textInput}
-        placeholder="Адреса електронної пошти"
-        autoComplete="email"
-      ></TextInput>
-      <TextInput
-        style={styles.textInput}
-        placeholder="Пароль"
-        autoComplete="password"
-      ></TextInput>
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.textButton}>Зареєстуватися</Text>
-      </TouchableOpacity>
-      <Text style={styles.textSing}> Вже є акаунт? Увійти </Text>
-    </View>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={styles.registrationForm}>
+        <Image style={styles.logoImage} source={LogoImage} />
+        <Image style={styles.AddImage} source={AddImage} />
+        <Text style={styles.text}>Реєстрація</Text>
+        <TextInput style={styles.textInput} placeholder="Логін"></TextInput>
+        <TextInput
+          style={styles.textInput}
+          placeholder="Адреса електронної пошти"
+          autoComplete="email"
+        ></TextInput>
+        <TextInput
+          style={styles.textInput}
+          placeholder="Пароль"
+          autoComplete="password"
+        ></TextInput>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.textButton}>Зареєстуватися</Text>
+        </TouchableOpacity>
+        <Text style={styles.textSing}> Вже є акаунт? Увійти </Text>
+      </View>
+    </TouchableWithoutFeedback>
   );
 }
 

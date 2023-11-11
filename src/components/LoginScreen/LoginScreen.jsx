@@ -6,6 +6,8 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   Platform,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from "react-native";
 import { useFonts } from "expo-font";
 
@@ -20,23 +22,25 @@ export default function LoginScreen() {
   }
 
   return (
-    <View style={styles.loginForm}>
-      <KeyboardAvoidingView
-        behavior={Platform.OS == "ios" ? "padding" : "height"}
-      >
-        <Text style={styles.text}>Увійти</Text>
-        <TextInput
-          style={styles.textInput}
-          placeholder="Адреса електронної пошти"
-        ></TextInput>
-        <TextInput style={styles.textInput} placeholder="Пароль"></TextInput>
-      </KeyboardAvoidingView>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={styles.loginForm}>
+        <KeyboardAvoidingView
+          behavior={Platform.OS == "ios" ? "padding" : "height"}
+        >
+          <Text style={styles.text}>Увійти</Text>
+          <TextInput
+            style={styles.textInput}
+            placeholder="Адреса електронної пошти"
+          ></TextInput>
+          <TextInput style={styles.textInput} placeholder="Пароль"></TextInput>
+        </KeyboardAvoidingView>
 
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.textButton}>Увійти</Text>
-      </TouchableOpacity>
-      <Text style={styles.textSing}> Немає акаунту? Зареєструватися </Text>
-    </View>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.textButton}>Увійти</Text>
+        </TouchableOpacity>
+        <Text style={styles.textSing}> Немає акаунту? Зареєструватися </Text>
+      </View>
+    </TouchableWithoutFeedback>
   );
 }
 
